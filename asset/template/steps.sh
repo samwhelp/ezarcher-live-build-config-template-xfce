@@ -26,13 +26,13 @@ MYHOSTNM="ezarcher"
 
 # Test for root user
 rootuser () {
-  if [[ "$EUID" = 0 ]]; then
-    return
-  else
-    echo "Please Run As Root"
-    sleep 2
-    exit
-  fi
+	if [[ "$EUID" = 0 ]]; then
+		return
+	else
+		echo "Please Run As Root"
+		sleep 2
+		exit
+	fi
 }
 
 # Display line error
