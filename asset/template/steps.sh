@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Revision: 25.04
+# Revision: 2025.11.01
 # (GNU/General Public License version 3.0)
 # by eznix (https://sourceforge.net/projects/ezarch/)
 
@@ -26,13 +26,13 @@ MYHOSTNM="ezarcher"
 
 # Test for root user
 rootuser () {
-	if [[ "$EUID" = 0 ]]; then
-		return
-	else
-		echo "Please Run As Root"
-		sleep 2
-		exit
-	fi
+  if [[ "$EUID" = 0 ]]; then
+    continue
+  else
+    echo "Please Run As Root"
+    sleep 2
+    exit
+  fi
 }
 
 # Display line error
@@ -64,7 +64,6 @@ rm ./ezreleng/airootfs/etc/ssh/sshd_config.d/10-archiso.conf
 rm -r ./ezreleng/grub
 rm -r ./ezreleng/efiboot
 rm -r ./ezreleng/syslinux
-rm -r ./ezreleng/airootfs/etc/xdg
 rm -r ./ezreleng/airootfs/etc/mkinitcpio.conf.d
 }
 
@@ -91,7 +90,7 @@ rm ./ezreleng/airootfs/etc/systemd/system/multi-user.target.wants/sshd.service
 rm ./ezreleng/airootfs/etc/systemd/system/multi-user.target.wants/iwd.service
 }
 
-# Add cups, haveged, NetworkManager, & sddm systemd links
+# Add cups, display manager, haveged, NetworkManager, & reflector systemd links
 addnmlinks () {
 mkdir -p ./ezreleng/airootfs/etc/systemd/system/network-online.target.wants
 mkdir -p ./ezreleng/airootfs/etc/systemd/system/multi-user.target.wants
@@ -102,6 +101,7 @@ mkdir -p ./ezreleng/airootfs/etc/systemd/system/sysinit.target.wants
 ln -sf /usr/lib/systemd/system/NetworkManager-wait-online.service ./ezreleng/airootfs/etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service
 ln -sf /usr/lib/systemd/system/NetworkManager-dispatcher.service ./ezreleng/airootfs/etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service
 ln -sf /usr/lib/systemd/system/NetworkManager.service ./ezreleng/airootfs/etc/systemd/system/multi-user.target.wants/NetworkManager.service
+ln -sf /usr/lib/systemd/system/reflector.service ./ezreleng/airootfs/etc/systemd/system/multi-user.target.wants/reflector.service
 ln -sf /usr/lib/systemd/system/haveged.service ./ezreleng/airootfs/etc/systemd/system/sysinit.target.wants/haveged.service
 ln -sf /usr/lib/systemd/system/cups.service ./ezreleng/airootfs/etc/systemd/system/printer.target.wants/cups.service
 ln -sf /usr/lib/systemd/system/cups.socket ./ezreleng/airootfs/etc/systemd/system/sockets.target.wants/cups.socket
@@ -160,10 +160,10 @@ users:x:985:"${MYUSERNM}"
 
 # Create shadow file
 crtshadow () {
-usr_hash=$(openssl passwd -6 "${MYUSRPASSWD}")
+user_hash=$(openssl passwd -6 "${MYUSRPASSWD}")
 root_hash=$(openssl passwd -6 "${RTPASSWD}")
 echo "root:"${root_hash}":14871::::::
-"${MYUSERNM}":"${usr_hash}":14871::::::" > ./ezreleng/airootfs/etc/shadow
+"${MYUSERNM}":"${user_hash}":14871::::::" > ./ezreleng/airootfs/etc/shadow
 }
 
 # create gshadow file

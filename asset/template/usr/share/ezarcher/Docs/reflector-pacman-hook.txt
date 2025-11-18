@@ -2,7 +2,6 @@ Automate mirrorlist generation with Pacman hook:
 
 Create a file /etc/pacman.d/hooks/mirrorupgrade.hook
 
-$ sudo mkdir /etc/pacman.d/hooks
 $ sudo nano /etc/pacman.d/hooks/mirrorupgrade.hook
 
 Add the following lines:
@@ -22,5 +21,5 @@ Save and close the file.
 
 _____
 reflector-pacman-hook.txt
-# Revision: 25.04.02 -- by eznix (https://sourceforge.net/projects/ezarch/)
+# Revision: 25.07.20 -- by eznix (https://sourceforge.net/projects/ezarch/)
 # (GNU/General Public License version 3.0)

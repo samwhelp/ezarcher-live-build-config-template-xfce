@@ -11,6 +11,7 @@ The ezmaint script attempts to collect various common maintenance tasks that hel
   5) Cleanup journal space
   6) Clean user cache on next boot
   7) Enable Bluetooth service
+  8) Enable Firewalld service
 
   X) Exit
 
@@ -37,19 +38,19 @@ Thes commands will clear the old GNUPG keyring files and will initialize, popula
 
   reflector --country 'United States' --latest 10 --sort rate --protocol https --save /etc/pacman.d/mirrorlist
 
-This command runs reflector and generates a new mirrorlist file based on the options specified in the command. My defaults are to select the recently updated within the last six hours that are hosted on https servers in the United States. Please look at the man page for reflector if you want to change the options.
+This command runs reflector and generates a new mirrorlist file based on the options specified in the command. My defaults are to select the latest 10 updated mirrors that are hosted on https servers in the United States. Please look at the man page for reflector if you want to change the options.
 -----
 4. Clean package cache:
 
-  pacman -Scc
+  paccache -rk1
 
-This command will perform an aggressive cleaning of the package cache and ask to remove all package cache contents for poth installed and uninstalled packages. If you wish to roll-back packages, this option should not be used.
+This command will perform an aggressive cleaning of the package cache and keep only one previous version of packages.
 -----
 5. Cleanup journal space:
 
-  journalctl --vacuum-time=2weeks
+  journalctl --vacuum-time=5days
 
-This command will removed any journal logs older than two weeks and free up space.
+This command will removed any journal logs older than five days and free up space.
 -----
 6. Cleanup user cache folder:
 
@@ -79,10 +80,16 @@ This option will create a systemd unit to delete all contents of the user's .cac
 
 This command will enable and start the Bluetooth service.
 -----
+8. Enable Firewalld service:
+
+  systemctl enable --now firewalld.service
+
+This comman will enable and start the Firewalld service.
+-----
 
 I hope these various functions come in handy. I must give credit to EF Tech Made Simple for his inspiration in the choice and implementation of these functions. Please view his video describing these maintenance tips here: https://youtu.be/wwSkFi3h2nI
 
 _____
 ezmaint-howto.txt
-# Revision: 25.04.02 -- by eznix (https://sourceforge.net/projects/ezarch/)
+# Revision: 25.07.20 -- by eznix (https://sourceforge.net/projects/ezarch/)
 # (GNU/General Public License version 3.0)

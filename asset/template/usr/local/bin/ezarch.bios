@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # EZ Arch Installer - BIOS
-# Revision: 25.04.02 -- by eznix (https://sourceforge.net/projects/ezarch/)
+# Revision: 25.07.20 -- by eznix (https://sourceforge.net/projects/ezarch/)
 # (GNU/General Public License version 3.0)
 
 # ----------------------------------------
@@ -35,7 +35,7 @@ welcome () {
   echo "=     Welcome to the Ezarch Installer Script      ="
   echo "=                                                 ="
   echo "=     BIOS Edition                                ="
-  echo "=     Revision: 25.04.02                          ="
+  echo "=     Revision: 25.07.20                          ="
   echo "=                                                 ="
   echo "=     Brought to you by eznix                     ="
   echo "=     https://sourceforge.net/projects/ezarch/    ="
@@ -265,7 +265,7 @@ mntpartnv () {
 
 psbase () {
   clear
-  pacstrap /mnt base base-devel cryptsetup curl dbus-broker dbus-broker-units dialog e2fsprogs device-mapper dhcpcd dosfstools efibootmgr gptfdisk grub less linux-lts linux-firmware linux-lts-headers lvm2 mkinitcpio mtools nano nvme-cli reflector rsync sysfsutils xz zstd
+  pacstrap /mnt base base-devel cryptsetup curl dbus-broker dbus-broker-units dialog e2fsprogs device-mapper dhcpcd dosfstools efibootmgr gptfdisk grub less linux-lts linux-firmware linux-firmware-whence linux-lts-headers lvm2 mkinitcpio mtools nano nvme-cli reflector rsync sysfsutils xz zstd
   clear
   echo -e "\n"
   echo "Pacstrap base system complete..."
@@ -340,7 +340,7 @@ instgrub () {
 
 instxorg () {
   clear
-  pacstrap /mnt mesa xclip xf86-input-evdev xf86-input-libinput xf86-input-synaptics xf86-input-vmmouse xf86-input-void xf86-video-amdgpu xf86-video-ati xf86-video-dummy xf86-video-fbdev xf86-video-nouveau xf86-video-qxl xf86-video-vesa xf86-video-vmware xorg-apps xorg-font-util xorg-fonts-75dpi xorg-fonts-100dpi xorg-fonts-encodings xorg-server xorg-server-common xorg-xinit xorg-xwayland xterm
+  pacstrap /mnt mesa xclip xf86-input-evdev xf86-input-libinput xf86-input-synaptics xf86-input-vmmouse xf86-input-void xf86-video-amdgpu xf86-video-ati xf86-video-dummy xf86-video-fbdev xf86-video-nouveau xf86-video-qxl xf86-video-vesa xorg-apps xorg-font-util xorg-fonts-75dpi xorg-fonts-100dpi xorg-fonts-encodings xorg-server xorg-server-common xorg-xinit xorg-xwayland xterm
   clear
   echo -e "\n"
   echo "Xorg installed installed..."
@@ -365,7 +365,7 @@ instgen () {
 
 instmedia () {
   clear
-  pacstrap /mnt alsa-card-profiles alsa-lib alsa-plugins alsa-firmware alsa-utils audacious audacious-plugins cdrdao dvdauthor faac faad2 ffmpeg ffmpegthumbnailer flac frei0r-plugins gstreamer gst-libav gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugin-pipewire gst-plugins-ugly gstreamer-vaapi imagemagick lame libdvdcss libopenraw mencoder mjpegtools mpv pipewire pipewire-alsa pipewire-audio pipewire-docs pipewire-jack pipewire-pulse pipewire-v4l2 poppler-glib sox smplayer wireplumber x265 x264 xvidcore
+  pacstrap /mnt alsa-card-profiles alsa-lib alsa-plugins alsa-firmware alsa-utils audacious audacious-plugins cdrdao dvdauthor faac faad2 ffmpeg ffmpegthumbnailer flac frei0r-plugins gstreamer gst-libav gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugin-pipewire gst-plugins-ugly gstreamer-vaapi imagemagick lame libdvdcss libopenraw mencoder mjpegtools pipewire pipewire-alsa pipewire-audio pipewire-docs pipewire-jack pipewire-pulse pipewire-v4l2 poppler-glib sox wireplumber x265 x264 xvidcore
   clear
   echo -e "\n"
   echo "Multimedia packages installed..."
@@ -375,7 +375,7 @@ instmedia () {
 
 instnet () {
   clear
-  pacstrap /mnt avahi b43-fwcutter broadcom-wl-dkms dmraid dnsmasq dnsutils ethtool falkon filezilla inetutils iwd net-tools netctl networkmanager networkmanager-openvpn network-manager-applet nm-connection-editor nfs-utils nilfs-utils nss-mdns openbsd-netcat openconnect openresolv openssh openssl openvpn samba vsftpd wget wireless-regdb wireless_tools whois wpa_supplicant
+  pacstrap /mnt avahi b43-fwcutter broadcom-wl-dkms dmraid dnsmasq dnsutils ethtool filezilla firefox firewalld inetutils iwd net-tools netctl networkmanager networkmanager-openvpn network-manager-applet nm-connection-editor nfs-utils nilfs-utils nss-mdns openbsd-netcat openconnect openresolv openssh openssl openvpn samba vsftpd wget wireless-regdb wireless_tools whois wpa_supplicant
   sleep 2
   arch-chroot /mnt systemctl enable NetworkManager.service
   clear
@@ -409,7 +409,7 @@ instprint () {
 
 instlxqt () {
   clear
-  pacstrap /mnt abiword accountsservice aisleriot brightnessctl breeze-icons fastfetch featherpad geany gnumeric guvcview k3b kwin liblxqt libstatgrab libsysstat lximage-qt lxqt-about lxqt-admin lxqt-archiver lxqt-build-tools lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-qtplugin lxqt-runner lxqt-session lxqt-sudo lxqt-themes meld pcmanfm-qt pavucontrol-qt print-manager qbittorrent qterminal screengrab sddm xdg-desktop-portal-lxqt xpdf xscreensaver
+  pacstrap /mnt abiword accountsservice aisleriot brightnessctl breeze-icons fastfetch featherpad geany gnumeric guvcview k3b kwin kwin-x11 liblxqt libstatgrab libsysstat lximage-qt lxqt-about lxqt-admin lxqt-archiver lxqt-build-tools lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-qtplugin lxqt-runner lxqt-session lxqt-sudo lxqt-themes lxqt-wayland-session meld mpv pcmanfm-qt pavucontrol-qt print-manager qbittorrent qterminal screengrab sddm smplayer xdg-desktop-portal-lxqt xpdf xscreensaver
   sleep 2
   arch-chroot /mnt systemctl enable sddm.service
   clear
@@ -421,7 +421,7 @@ instlxqt () {
 
 instkde () {
 clear
-  pacstrap /mnt abiword accountsservice aisleriot archlinux-appstream-data ark audiocd-kio bluedevil breeze-gtk breeze-icons discover dolphin fastfetch geany gnumeric guvcview gwenview k3b kcalc kate kdeconnect kde-gtk-config kinfocenter kio-fuse konsole kscreen kwallet-pam kwayland-integration kwin meld okular oxygen packagekit packagekit-qt6 papirus-icon-theme pavucontrol-qt plasma-browser-integration plasma-desktop plasma-disks plasma-nm plasma-pa plasma-systemmonitor plasma-vault plasma-workspace-wallpapers powerdevil print-manager qbittorrent sddm sddm-kcm solid sweeper spectacle xdg-desktop-portal-kde xsettingsd
+  pacstrap /mnt abiword accountsservice aisleriot archlinux-appstream-data ark audiocd-kio bluedevil breeze-gtk breeze-icons discover dolphin fastfetch geany gnumeric guvcview gwenview k3b kcalc kate kdeconnect kde-gtk-config kinfocenter kio-fuse konsole kscreen kwalletmanager kwallet-pam kwayland-integration kwin kwin-x11 libvlc meld mpv okular oxygen packagekit packagekit-qt6 papirus-icon-theme pavucontrol-qt phonon-qt6-vlc plasma-browser-integration plasma-desktop plasma-disks plasma-nm plasma-pa plasma-systemmonitor plasma-vault plasma-workspace-wallpapers plasma-x11-session powerdevil print-manager qbittorrent sddm sddm-kcm solid smplayer spectacle sweeper xdg-desktop-portal-kde xsettingsd
   sleep 2
   arch-chroot /mnt systemctl enable sddm.service
   clear
@@ -433,7 +433,7 @@ clear
 
 instxfce () {
   clear
-  pacstrap /mnt abiword accountsservice adapta-gtk-theme aisleriot blueman catfish dconf-editor fastfetch galculator geany gnome-firmware gnumeric gtk-engine-murrine guvcview light-locker lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings materia-gtk-theme meld orchis-theme pavucontrol polkit-gnome transmission-gtk xarchiver xdg-desktop-portal-gtk xfburn xfce4 xfce4-goodies xpdf
+  pacstrap /mnt abiword accountsservice aisleriot blueman catfish dconf-editor fastfetch galculator geany gnome-firmware gnumeric guvcview light-locker lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings materia-gtk-theme meld mpv orchis-theme pavucontrol polkit-gnome smplayer transmission-gtk xarchiver xdg-desktop-portal-gtk xfburn xfce4 xfce4-goodies xpdf
   sleep 2
   arch-chroot /mnt systemctl enable lightdm.service
   clear
@@ -445,7 +445,7 @@ instxfce () {
 
 instmate () {
   clear
-  pacstrap /mnt abiword accountsservice adapta-gtk-theme aisleriot blueman brasero dconf-editor fastfetch geany gnome-firmware gnumeric gtk-engine-murrine guvcview light-locker lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings mate mate-applet-dock mate-extra mate-polkit materia-gtk-theme meld orchis-theme transmission-gtk xdg-desktop-portal-gtk
+  pacstrap /mnt abiword accountsservice aisleriot blueman brasero dconf-editor fastfetch geany gnome-firmware gnumeric guvcview light-locker lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings mate mate-applet-dock mate-extra mate-polkit materia-gtk-theme meld mpv orchis-theme smplayer transmission-gtk xdg-desktop-portal-gtk
   sleep 2
   arch-chroot /mnt systemctl enable lightdm.service
   clear
@@ -457,7 +457,7 @@ instmate () {
 
 instcinn () {
   clear
-  pacstrap /mnt abiword accountsservice adwaita-icon-theme adapta-gtk-theme aisleriot blueman brasero cinnamon cinnamon-translations dconf-editor fastfetch file-roller geany gnome-firmware gnome-terminal gnumeric gsound gtk-engine-murrine guvcview light-locker lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings materia-gtk-theme meld nemo nemo-fileroller nemo-share orchis-theme pavucontrol polkit-gnome tldr tmux transmission-gtk viewnior xdg-desktop-portal-gtk xed xpdf
+  pacstrap /mnt abiword accountsservice adwaita-icon-theme aisleriot blueman brasero cinnamon cinnamon-translations dconf-editor fastfetch file-roller geany gnome-firmware gnome-terminal gnumeric gsound guvcview light-locker lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings materia-gtk-theme meld mpv nemo nemo-fileroller nemo-share orchis-theme pavucontrol polkit-gnome smplayer tldr tmux transmission-gtk viewnior xdg-desktop-portal-gtk xed xpdf
   sleep 2
   arch-chroot /mnt systemctl enable lightdm.service
   clear
@@ -469,24 +469,12 @@ instcinn () {
 
 instgnome () {
   clear
-  pacstrap /mnt abiword accountsservice adwaita-icon-theme adapta-gtk-theme aisleriot blueman brasero dconf-editor eog fastfetch file-roller gdm geany ghex gnome gnome-dictionary gnome-firmware gnome-photos gnome-sound-recorder gnome-tweaks gnumeric gtk-engine-murrine materia-gtk-theme meld orchis-theme papirus-icon-theme pavucontrol polkit-gnome seahorse sysprof tldr tmux transmission-gtk xdg-desktop-portal-gtk
+  pacstrap /mnt abiword accountsservice adwaita-icon-theme aisleriot blueman brasero dconf-editor eog fastfetch file-roller gdm geany ghex gnome gnome-dictionary gnome-firmware gnome-photos gnome-sound-recorder gnome-tweaks gnumeric materia-gtk-theme meld mpv orchis-theme papirus-icon-theme pavucontrol polkit-gnome seahorse smplayer sysprof tldr tmux transmission-gtk xdg-desktop-portal-gtk
   sleep 2
   arch-chroot /mnt systemctl enable gdm.service
   clear
   echo -e "\n"
   echo "Gnome desktop installed..."
-  sleep 2
-  clear
-}
-
-instlxde () {
-  clear
-  pacstrap /mnt abiword accountsservice adapta-gtk-theme aisleriot blueman fastfetch galculator geany gnumeric guvcview lxde lxdm materia-gtk-theme meld openbox orchis-theme papirus-icon-theme pavucontrol pcmanfm transmission-gtk xarchiver xpdf
-  sleep 2
-  arch-chroot /mnt systemctl enable lxdm.service
-  clear
-  echo -e "\n"
-  echo "LXDE desktop installed..."
   sleep 2
   clear
 }
@@ -647,10 +635,9 @@ do
   echo "  1) Cinnamon"
   echo "  2) Gnome"
   echo "  3) KDE"
-  echo "  4) LXDE"
-  echo "  5) LXQt"
-  echo "  6) Mate"
-  echo "  7) XFCE"
+  echo "  4) LXQt"
+  echo "  5) Mate"
+  echo "  6) XFCE"
   echo ""
   echo "  R) Return to menu"
   echo -e "\n"
@@ -659,10 +646,9 @@ do
     1 ) instcinn ;;
     2 ) instgnome ;;
     3 ) instkde ;;
-    4 ) instlxde ;;
-    5 ) instlxqt ;;
-    6 ) instmate ;;
-    7 ) instxfce ;;
+    4 ) instlxqt ;;
+    5 ) instmate ;;
+    6 ) instxfce ;;
     r|R ) main_menu ;;
     * ) invalid ;;
   esac
