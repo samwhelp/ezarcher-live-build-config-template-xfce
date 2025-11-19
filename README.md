@@ -2,10 +2,20 @@
 
 # ezarcher-live-build-config-template-xfce
 
-| Link | GitHub |
-| ---- | ------ |
-| [ezarcher-live-build-config-template-xfce](https://samwhelp.github.io/ezarcher-live-build-config-template-xfce/) | [GitHub](https://github.com/samwhelp/ezarcher-live-build-config-template-xfce) |
-| [ezarcher-live-build-config-respin-xfce](https://samwhelp.github.io/ezarcher-live-build-config-respin-xfce/) | [GitHub](https://github.com/samwhelp/ezarcher-live-build-config-respin-xfce) |
+
+
+
+## Home
+
+> [ezarcher-live-build-config-template-xfce](https://samwhelp.github.io/ezarcher-live-build-config-template-xfce/)
+
+| Project |
+| ------- |
+| [ezarcher-live-build-config-template-xfce](https://github.com/samwhelp/ezarcher-live-build-config-template-xfce) |
+| `+` |
+| [ezarcher-live-build-remix-xfce](https://github.com/samwhelp/ezarcher-live-build-remix-xfce) |
+| `=` |
+| [ezarcher-live-build-respin-xfce](https://github.com/samwhelp/ezarcher-live-build-respin-xfce) |
 
 
 
