@@ -12,4 +12,4 @@
 
 ## Version
 
-> SourceForge / Ezarcher / [Files](https://sourceforge.net/projects/ezarch/files/) / 250404
+> SourceForge / Ezarcher / [Files](https://sourceforge.net/projects/ezarch/files/) / 20251101
